@@ -2,6 +2,9 @@ var express = require('express');
 var logger = require('morgan');
 
 var store = require('./lib/store');
+var server = require('./lib/server');
+var cron = require('./lib/cron');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -43,4 +46,4 @@ app.use(function(err, req, res, next) {
     });
 });
 
-module.exports = app;
+server.start(app);

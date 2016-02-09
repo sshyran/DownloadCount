@@ -1,5 +1,5 @@
 {
-  "port": 3040,
+  "port": 3030,
   "ping": 5,
   "endpoint": "http://localhost:3000/count"
 }

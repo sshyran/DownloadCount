@@ -1,0 +1,8 @@
+machine:
+  node:
+    version: 0.10.36
+deployment:
+  production:
+    branch: production
+    commands:
+      - grunt shipit:prd deploy

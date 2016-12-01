@@ -1,13 +1,14 @@
 var express = require('express');
-var logger = require('morgan');
-
-var store = require('./lib/store');
-var server = require('./lib/server');
-var cron = require('./lib/cron');
+var config = require('ghost-ignition').config();
+var server = require('ghost-ignition').server;
+var errors = require('ghost-ignition').errors;
+var github = require('./lib/github');
+var daisy = require('./lib/daisy');
+var logRequest = require('./middlewares/log-request');
 
 var app = express();
 
-app.use(logger('dev'));
+app.use(logRequest);
 
 // Configure express
 app.set('x-powered-by', false);
@@ -16,34 +17,36 @@ app.set('query parser', false);
 function corsHeaders(req, res, next) {
     res.set('Access-Control-Allow-Origin', '*');
     res.set('Access-Control-Request-Method', 'GET');
-    res.set('Cache-Control', 'no-cache');
 
+    // set cloudflare cache header to 1 hour
+    res.set('Cache-Control', 'public, max-age=3600');
     next();
 }
 
-app.get('/', corsHeaders, function(req, res, next) {
-    res.status(200).json({'count': store.get() });
+app.get('/', corsHeaders, function (req, res, next) {
+    var count = config.get('historicalCountValue');
+
+    count += github.getDownloadsCount();
+    count += daisy.fetchEventsCount();
+
+    res.status(200).json({
+        count: count
+    });
 });
 
 app.options('/', corsHeaders, function (req, res, next) {
     res.sendStatus(204);
 });
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function (req, res, next) {
+    next(new errors.NotFoundError());
 });
 
-// error handlers
-// stacktraces only sent in development mode
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
+    req.err = err;
     res.status(err.status || 500);
-    res.json({
-        message: err.message,
-        error: app.get('env') === 'development' ? err : {}
-    });
+
+    res.json(errors.utils.serialize(err));
 });
 
 server.start(app);

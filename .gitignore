@@ -31,6 +31,8 @@ node_modules
 
 *.db
 
-config.json
+config.*.json
+!config.example.json
+
 stripe-test-scripts
 *.pem

@@ -1,5 +1,21 @@
 {
   "port": 3030,
-  "ping": 5,
-  "endpoint": "http://localhost:3000/count"
+  "daisy": {
+    "url": "http://localhost:8081",
+    "client_id": "example",
+    "client_secret": "testing",
+    "currentCount": 127859,
+    "requestTimeout": 3600000
+  },
+  "historicalCountValue": 1000000,
+  "github": {
+    "currentCount": 151788,
+    "token": "",
+    "requestTimeout": 7200000
+  },
+  "logging": {
+    "transports": [
+      "stdout"
+    ]
+  }
 }

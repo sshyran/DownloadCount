@@ -16,4 +16,4 @@ deployment:
       - echo "docker push ghost/downloadcount:$CIRCLE_TAG"
       - echo $CIRCLE_TAG
       - echo $CIRCLE_SHA1
-      - echo ${CIRCLE_TAG?CIRCLE_SHA1}
+      - echo ${CIRCLE_TAG:-$CIRCLE_SHA1}

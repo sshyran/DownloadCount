@@ -1,8 +1,19 @@
 machine:
   node:
-    version: 0.10.36
+    version: 4.6.2
+  services:
+    - docker
+
+test:
+  override:
+    - echo "Run some tests ... ;-)"
+
 deployment:
-  production:
-    branch: production
+  hub:
+    branch: master
     commands:
-      - grunt shipit:prd deploy
+      - echo "docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS"
+      - echo "docker push ghost/downloadcount:$CIRCLE_TAG"
+      - echo $CIRCLE_TAG
+      - echo $CIRCLE_SHA1
+      - echo ${CIRCLE_TAG?CIRCLE_SHA1}

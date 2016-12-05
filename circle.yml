@@ -8,9 +8,3 @@ test:
   override:
     - echo "Run some tests ... ;-)"
 
-deployment:
-  hub:
-    branch: master
-    commands:
-      - docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push ghost/downloadcount:${CIRCLE_TAG:-$CIRCLE_SHA1}

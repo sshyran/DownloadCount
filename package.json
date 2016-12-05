@@ -1,9 +1,10 @@
 {
   "name": "count",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "private": true,
   "scripts": {
-    "start": "node ./app"
+    "start": "node ./app",
+    "publish": "np"
   },
   "dependencies": {
     "body-parser": "1.13.2",
@@ -19,6 +20,7 @@
     "grunt": "0.4.5",
     "grunt-cli": "0.1.13",
     "grunt-shipit": "1.0.0",
+    "np": "^2.10.1",
     "shipit-deploy": "2.1.3"
   }
 }

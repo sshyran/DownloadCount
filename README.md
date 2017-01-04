@@ -18,3 +18,7 @@ Please add your Github token to your config to receive the downloads count.
 
 ## Daisy Client credentials
 Please add your Daisy client credentials.
+
+# Copyright & License
+
+Copyright (c) 2016-2017 Ghost Foundation - Released under the [MIT license](LICENSE).

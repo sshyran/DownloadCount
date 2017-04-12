@@ -17,6 +17,7 @@ app.set('query parser', false);
 function corsHeaders(req, res, next) {
     res.set('Access-Control-Allow-Origin', '*');
     res.set('Access-Control-Request-Method', 'GET');
+    res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Accept-Language')
 
     // set cloudflare cache header to 1 hour
     res.set('Cache-Control', 'public, max-age=3600');

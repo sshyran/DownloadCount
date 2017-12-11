@@ -5,7 +5,20 @@ function init(shipit) {
     default: {
       workspace: './',
       deployTo: '/opt/downloadcount/',
-      ignores: ['.git', 'node_modules'],
+      ignores: ['.git', 'node_modules']
+    },
+    staging: {
+      servers: process.env.STG_USER + '@' + process.env.STG_SERVER,
+      sharedLinks: [{
+        name: 'node_modules',
+        type: 'directory'
+      }, {
+        name: 'config.staging.json',
+        type: 'file'
+      }]
+    },
+    production: {
+      servers: process.env.PRD_USER + '@' + process.env.PRD_SERVER,
       sharedLinks: [{
         name: 'node_modules',
         type: 'directory'
@@ -13,12 +26,6 @@ function init(shipit) {
         name: 'config.production.json',
         type: 'file'
       }]
-    },
-    staging: {
-      servers: process.env.STG_USER + '@' + process.env.STG_SERVER
-    },
-    production: {
-      servers: process.env.PRD_USER + '@' + process.env.PRD_SERVER
     }
   });
 }

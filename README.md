@@ -21,4 +21,4 @@ Please add your Daisy client credentials.
 
 # Copyright & License
 
-Copyright (c) 2016-2017 Ghost Foundation - Released under the [MIT license](LICENSE).
+Copyright (c) 2016-2018 Ghost Foundation - Released under the [MIT license](LICENSE).

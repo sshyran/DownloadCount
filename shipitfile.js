@@ -1,5 +1,5 @@
 function init(shipit) {
-  require('ghost-deploy')(shipit);
+  require('@tryghost/deploy')(shipit);
 
   shipit.initConfig({
     default: {

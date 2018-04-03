@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "@tryghost/deploy": "0.0.2",
-    "np": "2.10.1"
+    "np": "2.19.0"
   }
 }

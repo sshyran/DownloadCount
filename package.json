@@ -3,9 +3,11 @@
   "version": "1.0.2",
   "private": true,
   "scripts": {
-    "start": "node ./app",
-    "publish": "np",
-    "shipit": "shipit"
+    "start": "node app.js",
+    "dev": "NODE_ENV=development DEBUG=count:* node app.js",
+    "ship": "np --yolo",
+    "deploy": "shipit",
+    "shipit": "yarn deploy"
   },
   "license": "MIT",
   "dependencies": {

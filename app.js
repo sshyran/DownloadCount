@@ -5,6 +5,7 @@ var errors = require('ghost-ignition').errors;
 var github = require('./lib/github');
 var daisy = require('./lib/daisy');
 var logRequest = require('./middlewares/log-request');
+var currentCount = '';
 
 var app = express();
 

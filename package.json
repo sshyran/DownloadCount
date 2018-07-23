@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "NODE_ENV=development DEBUG=count:* node app.js",
-    "ship": "np --yolo",
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn publish && git push --follow-tags; fi",
     "deploy": "shipit",
     "shipit": "yarn deploy"
   },
@@ -25,7 +25,6 @@
     "request-promise": "4.1.1"
   },
   "devDependencies": {
-    "@tryghost/deploy": "0.0.2",
-    "np": "2.19.0"
+    "@tryghost/deploy": "0.0.2"
   }
 }

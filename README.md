@@ -6,12 +6,16 @@ Service to ping ghost.org to get the current download count, and return it to an
 
 To start the service:
 
-`npm start`
+`yarn start`
 
 To start the service, with debug output:
 
-`DEBUG=count:* npm start`
+`DEBUG=count:* yarn start`
 
+## Development
+
+### Publish
+- `yarn ship`
 
 ## Github Token
 Please add your Github token to your config to receive the downloads count.

@@ -5,6 +5,11 @@
   "scripts": {
     "start": "node app.js",
     "dev": "NODE_ENV=development DEBUG=count:* node app.js",
+    "lint": "eslint . --ext .js --cache",
+    "test": "NODE_ENV=testing mocha -- $(find test -name '*.test.js')",
+    "posttest": "yarn lint",
+    "coverage": "NODE_ENV=testing istanbul cover --dir test/coverage _mocha -- $(find test -name '*.test.js')",
+    "preship": "yarn test",
     "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn publish && git push --follow-tags; fi",
     "deploy": "shipit",
     "shipit": "yarn deploy"
@@ -25,6 +30,14 @@
     "request-promise": "4.1.1"
   },
   "devDependencies": {
-    "@tryghost/deploy": "0.0.2"
+    "@tryghost/deploy": "0.0.2",
+    "eslint": "^5.11.1",
+    "eslint-plugin-ghost": "^0.0.27",
+    "istanbul": "^0.4.5",
+    "mocha": "^2.5.3",
+    "rewire": "^4.0.1",
+    "should": "^13.2.3",
+    "sinon": "^7.2.2",
+    "supertest": "^3.3.0"
   }
 }

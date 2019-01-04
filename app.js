@@ -51,3 +51,5 @@ app.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
 });
 
 server.start(app);
+
+module.exports = {app, server};

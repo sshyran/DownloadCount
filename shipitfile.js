@@ -5,7 +5,7 @@ function init(shipit) {
         default: {
             workspace: './',
             deployTo: '/opt/downloadcount/',
-            ignores: ['.git', 'node_modules']
+            ignores: ['.git', 'node_modules', 'Dockerfile', '.dockerignore']
         },
         staging: {
             servers: process.env.STG_USER + '@' + process.env.STG_SERVER,
